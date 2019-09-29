@@ -1093,7 +1093,9 @@ macro is used.
 	  (when async (user-error "ASYNC not allow for ravel"))
 	  (org-ravel-reset-confirm org-ravel-no-confirm-for-ravel)
 	  (org-export-to-buffer backend buffer async subtreep visible-only
-				body-only ext-plist post-process))))
+		                          body-only ext-plist post-process)
+      (find-file-other-window file)
+  )))
 
 #+END_SRC
 
@@ -1263,8 +1265,10 @@ the default is set to `footer'.
 	 :filters-alist   '((:filter-latex-fragment .org-ravel-cite-as-pandoc)))
        (org-ravel-define-exporter
 	'ravel-markdown
-	'rmd ?m "Ravel-markdown" "md" nil t nil 
-	'((:filter-latex-fragment . org-ravel-filter-cite-as-pandoc)))))
+	'rmd ?m "Ravel-markdown" "md" nil t nil   
+  ;; the below was commented out, but why??
+    '((:filter-latex-fragment . org-ravel-filter-cite-as-pandoc)))
+  ))
 
 #+END_SRC
 
