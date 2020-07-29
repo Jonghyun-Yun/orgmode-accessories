@@ -1094,7 +1094,9 @@ macro is used.
 	  (when async (user-error "ASYNC not allow for ravel"))
 	  (org-ravel-reset-confirm org-ravel-no-confirm-for-ravel)
 	  (org-export-to-buffer backend buffer async subtreep visible-only
-				body-only ext-plist post-process))))
+		                          body-only ext-plist post-process)
+      (find-file-other-window file)
+  )))
 
 #+END_SRC
 
@@ -1314,6 +1316,7 @@ Set up a =YAML= header:
 
   (defun org-ravel-rmd-template (contents info)
     "Return complete document string after Markdown conversion.
+<<<<<<< HEAD
 	CONTENTS is the transcoded contents string.  INFO is a plist
 	used as a communication channel. A YAML block is added as a
 	header consisting of all YAML export blocks and (optionally)
@@ -1361,6 +1364,30 @@ trigger a failure if the pandoc backend is not loaded.
 
 
 #+end_src
+=======
+    CONTENTS is the transcoded contents string.  INFO is a plist used
+    as a communication channel. A YAML block is added as a header or footer."
+    (let ((rmd_yaml (org-ravel--yaml-header info)))
+      (concat (when (eq (car rmd_yaml) 'header) (cdr rmd_yaml))
+	      contents
+	      (when (eq (car rmd_yaml) 'footer) (cdr rmd_yaml)))))
+
+
+  (eval-after-load 'ox-md
+    '(progn
+       (org-export-define-derived-backend
+	   'rmd
+	   'md
+	 :translate-alist '((template . org-ravel-rmd-template))
+	 :options-alist '((:with-auto-yaml-header nil "rmd_yaml" 'footer t)) 
+	 :filters-alist   '((:filter-latex-fragment .org-ravel-cite-as-pandoc)))
+       (org-ravel-define-exporter
+	'ravel-markdown
+	'rmd ?m "Ravel-markdown" "md" nil t nil   
+  ;; the below was commented out, but why??
+    '((:filter-latex-fragment . org-ravel-filter-cite-as-pandoc)))
+  ))
+>>>>>>> 89f55587e573791ec313b603d8aad116d00737f5
 
 
 * provide ravel							   :noexport:
