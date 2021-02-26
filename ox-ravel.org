@@ -195,6 +195,7 @@ can be used. Check out
 ** The elisp header for ox-ravel.el
 
  #+BEGIN_SRC emacs-lisp :tangle ox-ravel.el :comments no
+   ;; -*- no-byte-compile: t; -*-
    ;;; ox-ravel.el --- Sweave/knit/brew document maker for orgmode
    ;; Copyright (C) 2012---2016  Charles C. Berry
 
