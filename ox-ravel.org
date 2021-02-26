@@ -1321,7 +1321,6 @@ Set up a =YAML= header:
 
   (defun org-ravel-rmd-template (contents info)
     "Return complete document string after Markdown conversion.
-<<<<<<< HEAD
 	CONTENTS is the transcoded contents string.  INFO is a plist
 	used as a communication channel. A YAML block is added as a
 	header consisting of all YAML export blocks and (optionally)
