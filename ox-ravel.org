@@ -804,6 +804,15 @@ produce the `org-ravel-block/inline-brew' functions.
 
 #+END_SRC
 ** standard block/inline chunk styles
+:PROPERTIES:
+:header-args: :tangle ox-ravel-style.el :comments org
+:END:
+
+Separate =defmarco= and thier evaluations.
+
+#+begin_src emacs-lisp
+(unless (featurep 'ox-ravel) (require 'ox-ravel))
+#+end_src
 
 See the `org-ravel-style-x' docstring for more details.
 
