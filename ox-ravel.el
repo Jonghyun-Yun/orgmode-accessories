@@ -1,4 +1,3 @@
-;; -*- no-byte-compile: t; -*-
 ;;; ox-ravel.el --- Sweave/knit/brew document maker for orgmode
 ;; Copyright (C) 2012---2016  Charles C. Berry
 

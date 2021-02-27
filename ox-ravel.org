@@ -195,7 +195,6 @@ can be used. Check out
 ** The elisp header for ox-ravel.el
 
  #+BEGIN_SRC emacs-lisp :tangle ox-ravel.el :comments no
-   ;; -*- no-byte-compile: t; -*-
    ;;; ox-ravel.el --- Sweave/knit/brew document maker for orgmode
    ;; Copyright (C) 2012---2016  Charles C. Berry
 
@@ -811,7 +810,7 @@ produce the `org-ravel-block/inline-brew' functions.
 Separate =defmarco= and thier evaluations.
 
 #+begin_src emacs-lisp
-(unless (featurep 'ox-ravel) (require 'ox-ravel))
+(require 'ox-ravel)
 #+end_src
 
 See the `org-ravel-style-x' docstring for more details.
@@ -872,6 +871,14 @@ inline code.
 
 *** TODO org-ravel-style-x-asciidoc
 *** TODO org-ravel-style-x-textile
+
+** provide =ox-ravel-style=
+#+BEGIN_SRC emacs-lisp :tangle ox-ravel-style.el
+  (provide 'ox-ravel-style)
+
+  ;;; ox-ravel-style.el ends here
+#+END_SRC
+
 * Exporter
 ** Transcoders
 
