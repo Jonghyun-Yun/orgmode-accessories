@@ -6,7 +6,7 @@
 ;; Separate =defmarco= and thier evaluations.
 
 
-(require 'ox-ravel)
+(unless (featurep 'ox-ravel) (require 'ox-ravel))
 
 ;; org-ravel-style-x-rnw
 ;; #+NAME: org-ravel-style-x-rnw
@@ -59,9 +59,3 @@
 		   "..{r %s}\n%s\n.. .."
 		   ":r:`%s`"
 		   "%")
-
-;; provide =ox-ravel-style=
-
-(provide 'ox-ravel-style)
-
-;;; ox-ravel-style.el ends here
